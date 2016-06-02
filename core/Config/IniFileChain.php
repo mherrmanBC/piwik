@@ -475,7 +475,7 @@ class IniFileChain
                     //if this succeeds, assign the tmp value to the actual value.
                     $values = $tmp;
                 }
-            }catch(){}
+            }catch(Exception $ex){}
             return html_entity_decode($values, ENT_COMPAT, 'UTF-8');
         }
         return $values;
