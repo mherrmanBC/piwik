@@ -68,7 +68,7 @@ class PhpSettingsCheck implements Diagnostic
         if ($this->isPhpVersionAtLeast56() && ! defined("HHVM_VERSION") && !$this->isPhpVersionAtLeast70()) {
             // always_populate_raw_post_data must be -1
             // removed in PHP 7
-            $requiredSettings[] = 'always_populate_raw_post_data=-1';
+            //$requiredSettings[] = 'always_populate_raw_post_data=-1';
         }
 
         return $requiredSettings;
