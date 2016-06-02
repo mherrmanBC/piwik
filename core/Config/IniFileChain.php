@@ -454,7 +454,7 @@ class IniFileChain
     }
 
     /**
-     * Decode HTML entities
+     * Decode HTML entities and replace ENV[...] entries with environment variables
      *
      * @param mixed $values
      * @return mixed
@@ -467,6 +467,15 @@ class IniFileChain
             }
             return $values;
         } elseif (is_string($values)) {
+            // Replace environment variables
+            try{
+                if (preg_match('~^ENV\[([^)]+)\]$~', $values, $matches))
+                {
+                    $tmp = getenv($matches[1]);
+                    //if this succeeds, assign the tmp value to the actual value.
+                    $values = $tmp
+                }
+            }catch(){}
             return html_entity_decode($values, ENT_COMPAT, 'UTF-8');
         }
         return $values;
