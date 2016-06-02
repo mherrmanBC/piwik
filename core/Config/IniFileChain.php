@@ -473,7 +473,7 @@ class IniFileChain
                 {
                     $tmp = getenv($matches[1]);
                     //if this succeeds, assign the tmp value to the actual value.
-                    $values = $tmp
+                    $values = $tmp;
                 }
             }catch(){}
             return html_entity_decode($values, ENT_COMPAT, 'UTF-8');
